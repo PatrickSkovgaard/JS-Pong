@@ -1,0 +1,174 @@
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+:root{
+    --hue: 200;
+    --saturation: 30%;
+    --foreground-color: hsl(var(--hue), var(--saturation), 75%);
+    --background-color: hsl(var(--hue), var(--saturation), 0%);
+    --player-red: rgb(211, 17, 17);
+    --player-green: rgb(0, 255, 0);
+}
+
+body{
+    margin: 0;
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+
+.paddle{
+    --position: 50;
+
+    position: absolute;
+    background-color: var(--foreground-color);
+    height: 10vh;
+    width: 1vh;
+    top: calc(var(--position) * 1vh);
+    transform: translateY(-50%);
+}
+
+#left_paddle{
+    background-color: var(--player-red);
+    left: 2vw;
+}
+
+#right_paddle{
+    background-color: var(--player-green);
+    right: 2vw;
+}
+
+
+.ball{
+    --x:50;
+    --y:50;
+
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--foreground-color);
+    height: 2.5vh;
+    width: 2.5vh;
+    left: calc(var(--x) * 1vw);
+    top: calc(var(--y) * 1vh);
+    transform: translateY(-50%, -50%);
+}
+
+#scoreboard{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 5vh;
+}
+
+/* 
+    > * means every direct child. One score takes up one half of the screen
+    and the other score takes up the other half of the screen.
+*/
+#scoreboard > * {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 2vh;
+    margin: 1vh 0;
+}
+
+/*
+    Select the first child of .score
+*/
+#scoreboard > :first-child{
+    text-align: right;
+    border-right: .5vh solid var(--foreground-color);
+}
+
+#player_left_score{
+    color: var(--player-red);
+}
+
+#player_right_score{
+    color: var(--player-green);
+}
+
+
+
+
+
+
+/*body{
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+#scoreboard{
+    height: 10vh;
+    width: 25vw;
+    border: solid beige 2px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#middle_line{
+    font-size: 80px;
+    margin-bottom: 13px;
+    color: white;
+}
+
+#player_left_score{
+    font-size: 30px;
+    color: green;
+}
+
+#player_right_score{
+    font-size: 30px;
+    color: blue;
+}
+
+#canvas{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50vh;
+    width: 70vw;
+    border: solid snow 2px;    
+} 
+
+#player_left{
+    height: 12vh;
+    width: 1vw;
+    background-color: green;
+    color: red;
+    margin-left: 10px;
+}
+
+#player_right{
+    height: 12vh;
+    width: 1vw;
+    background-color: blue;
+    color: yellow;
+    margin-right: 10px;
+    animation: anima 0s 1 forwards linear;
+}
+
+#ball{
+    height: 2.5vh;
+    width: 2vw;
+    background-color: white;
+    border-radius: 50%;
+}
+
+
+@keyframes anima{
+    33%{
+        margin-top: 20px;
+    }
+    66%{
+        margin-top: 10px;
+    }
+}

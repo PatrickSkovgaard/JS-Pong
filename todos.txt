@@ -1,0 +1,6 @@
+Make a start menu, with difficulties
+Make player color optional
+Make player side optional
+Make a pause menu
+
+other?
